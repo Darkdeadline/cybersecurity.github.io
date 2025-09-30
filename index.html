@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberGuard Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        :root {
+            --primary-bg: #1A202C; /* Very Dark Blue */
+            --secondary-bg: #2D3748; /* Dark Blue-Gray */
+            --text-primary: #E2E8F0; /* Light Gray */
+            --text-secondary: #A0AEC0; /* Gray */
+            --accent-color: #4FD1C5; /* Teal */
+            --card-bg: #2D3748;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Reusable Container */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+        
+        /* Simulates a full-page section */
+        .page-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid var(--secondary-bg);
+        }
+
+        h1, h2, h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.5rem; }
+        p { 
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            max-width: 600px;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background-color: var(--primary-bg);
+            padding: 1rem 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #38b2ac; /* Darker Teal */
+            transform: translateY(-3px);
+        }
+
+        /* Home Section */
+        #home .container {
+            text-align: center;
+        }
+        #home h1 {
+            line-height: 1.2;
+        }
+        #home p {
+            margin: 1rem auto;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        #about .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        #about .about-text {
+            flex: 1;
+        }
+        #about .about-image {
+            flex: 1;
+            max-width: 400px;
+        }
+        #about .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(79, 209, 197, 0.2);
+        }
+        .service-card .icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Blog Section */
+        .blog-post {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        .blog-post h3 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+        }
+        .blog-post .meta {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .blog-post a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .blog-post a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        #contact form {
+            max-width: 600px;
+            margin-top: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--secondary-bg);
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            border-radius: 5px;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #11151C; /* Even Darker Blue */
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--secondary-bg);
+        }
+        .footer p {
+            max-width: 100%;
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            
+            .header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .nav-links {
+                margin-top: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+            .nav-links li {
+                margin: 0 1rem;
+            }
+
+            .container {
+                padding: 6rem 0 2rem 0; /* Adjust padding for fixed header */
+            }
+
+            .page-section {
+                min-height: auto; /* Allow sections to have natural height on mobile */
+            }
+
+            #about .about-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <a href="#home" class="logo">CyberGuard<span>.</span></a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="page-section">
+            <div class="container">
+                <h1>Securing Your Digital Frontier</h1>
+                <p>Proactive cybersecurity solutions tailored for modern threats. We protect your data, your business, and your peace of mind.</p>
+                <a href="#services" class="btn">Explore Our Services</a>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="page-section">
+            <div class="container about-content">
+                <div class="about-text">
+                    <h2>Who We Are</h2>
+                    <p>CyberGuard Solutions was founded by a team of passionate security experts dedicated to making the digital world a safer place. We believe that robust security should be accessible to all businesses, not just large corporations.</p>
+                    <p>Our mission is to provide cutting-edge, comprehensive security strategies that anticipate threats and neutralize them before they can cause harm. We are your trusted partners in digital defense.</p>
+                </div>
+                <div class="about-image">
+                    <!-- Placeholder image to represent a professional team environment -->
+                    <img src="https://placehold.co/600x400/2D3748/E2E8F0?text=Our+Team" alt="CyberGuard Solutions Team">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="page-section">
+            <div class="container">
+                <h2 style="text-align: center;">Our Core Services</h2>
+                <p style="text-align: center; margin-left: auto; margin-right: auto;">We offer a suite of services designed to provide 360-degree protection.</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon">&#128737;</div> <!-- Shield Icon -->
+                        <h3>Threat Assessment</h3>
+                        <p>We identify vulnerabilities in your network, applications, and infrastructure to quantify your risk exposure.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">&#128272;</div> <!-- Lock Icon -->
+                        <h3>Penetration Testing</h3>
+                        <p>Our ethical hackers simulate real-world attacks to test the strength of your defenses and find weak points.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">&#128187;</div> <!-- Computer Icon -->
+                        <h3>Incident Response</h3>
+                        <p>In the event of a breach, our rapid response team works to contain the threat and minimize damage.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="page-section">
+            <div class="container">
+                <h2>From the Blog</h2>
+                <p>Stay informed with our latest insights and analysis on the cybersecurity landscape.</p>
+                <div class="blog-posts-container">
+                    <div class="blog-post">
+                        <h3>The Rise of AI in Phishing Attacks</h3>
+                        <p class="meta">By Alex Ray | September 28, 2025</p>
+                        <p>Artificial intelligence is making phishing scams more sophisticated than ever. Learn how to spot these advanced threats...</p>
+                        <!-- The target="_blank" attribute opens the link in a new tab -->
+                        <a href="https://en.wikipedia.org/wiki/Phishing" target="_blank" rel="noopener noreferrer">Read More &rarr;</a>
+                    </div>
+                    <div class="blog-post">
+                        <h3>Why Multi-Factor Authentication is Non-Negotiable</h3>
+                        <p class="meta">By Jane Doe | September 22, 2025</p>
+                        <p>If you're not using MFA, you're leaving the door wide open for attackers. We break down the essentials...</p>
+                        <a href="https://en.wikipedia.org/wiki/Multi-factor_authentication" target="_blank" rel="noopener noreferrer">Read More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page-section">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>Have a question or need a consultation? We're here to help. Fill out the form below or email us directly.</p>
+                <form action="#">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2025 CyberGuard Solutions. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
